@@ -21,9 +21,9 @@
   --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.2);
-  --highlight-color: rgba(0, 0, 0, 0.1 );
+  --highlight-color: rgba(0, 0, 0, 0.15 );
   --switch-bg-url: url(/assets/sun.svg);
-  --button-background--color: rgba(192, 192, 192, 0.984); 
+  --button-background--color: rgb(220, 220, 220); 
 }
 
 body {
@@ -80,12 +80,15 @@ body * {
   left: 0;
   z-index: 1;
   transform: translateY(-50%);
-  transition: all 0.5s ease;
+ animation: slide-back 0.5s forwards;
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+ animation: slide-in 0.5s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -162,4 +165,22 @@ footer {
     --bg-url: url(./assets/bg-desktop-light.jpg);
   }
 }
+
+@keyframes slide-in {
+  from{
+    left: 0;
+  }
+  to{
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from{
+    left: 50%;
+  }
+  to{
+    left: 0;
+  }
+} 
 
